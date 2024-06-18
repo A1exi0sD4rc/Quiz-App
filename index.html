@@ -1,11 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Runde</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Runde</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./script.js"></script>
+  <!-- bootstrap-->
+  <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./node_modules/bootstrap/dist/js/bootstrap.min.js">
 </head>
-<body>
-    <div></div>
+
+<body onload="init()">
+  <header>
+    <nav class="navbar bg-body-tertiary">
+      <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1">QuizApp</span>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <div class="card">
+      <img src="./img/card-bg.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 id="question" class="card-title">Frage</h5>
+
+        <div class="card mb-3">
+          <div id="answer_1" class="card-body">
+            Antwort
+          </div>
+        </div>
+
+        <div class="card mb-3">
+          <div id="answer_2" class="card-body">
+            Antwort
+          </div>
+        </div>
+
+        <div class="card mb-3">
+          <div id="answer_3" class="card-body">
+            Antwort
+          </div>
+        </div>
+        
+        <div class="card mb-3">
+          <div id="answer_4" class="card-body">
+            Antwort
+          </div>
+        </div>
+
+        <div class="question-footer">
+          <div>
+            <b>1</b> von <b id="max-questions"></b> Fragen
+          </div>
+
+          <button type="button" class="btn btn-primary">Nächste Frage</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
 </body>
+
 </html>

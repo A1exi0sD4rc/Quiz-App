@@ -1,0 +1,25 @@
+/* general */
+
+body {
+    background-color: rgb(88, 108, 255) !important;
+    min-height: 100vw;
+}
+
+/* main content */
+
+#main {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* question-card */
+
+.question-footer {
+    border-top: solid 1px lightgray;
+    padding-top: 12px;
+    display: flex;
+    justify-content: space-between;
+}
