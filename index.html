@@ -22,30 +22,30 @@
   </header>
 
   <main id="main">
-    <div class="card">
-      <img src="./img/card-bg.jpg" class="card-img-top" alt="...">
+    <div class="card ">
+      <img src="./img/card-bg.jpg" class="card-img-top">
       <div class="card-body">
         <h5 id="question" class="card-title">Frage</h5>
 
-        <div class="card mb-3">
+        <div class="card quiz-answer mb-3" onclick="answer(1)">
           <div id="answer_1" class="card-body">
             Antwort
           </div>
         </div>
 
-        <div class="card mb-3">
+        <div class="card quiz-answer mb-3" onclick="answer(2)">
           <div id="answer_2" class="card-body">
             Antwort
           </div>
         </div>
 
-        <div class="card mb-3">
+        <div class="card quiz-answer mb-3" onclick="answer(3)">
           <div id="answer_3" class="card-body">
             Antwort
           </div>
         </div>
         
-        <div class="card mb-3">
+        <div class="card quiz-answer mb-3" onclick="answer(4)">
           <div id="answer_4" class="card-body">
             Antwort
           </div>
@@ -53,10 +53,10 @@
 
         <div class="question-footer">
           <div>
-            <b>1</b> von <b id="max-questions"></b> Fragen
+            <b id="current-question">1</b> von <b id="max-questions"></b> Fragen
           </div>
 
-          <button type="button" class="btn btn-primary">Nächste Frage</button>
+          <button id="next-question" type="button" class="btn btn-primary" onclick="nextQuestion()" disabled>Nächste Frage</button>
         </div>
       </div>
     </div>

@@ -17,6 +17,11 @@ body {
 
 /* question-card */
 
+.quiz-answer:hover {
+    cursor: pointer;
+    background-color: rgb(233, 232, 232);
+}
+
 .question-footer {
     border-top: solid 1px lightgray;
     padding-top: 12px;
