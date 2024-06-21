@@ -2,7 +2,6 @@
 
 body {
     background-color: rgb(88, 108, 255) !important;
-    min-height: 100vw;
     overflow: hidden;
 }
 
@@ -14,23 +13,28 @@ body {
 /* header content */
 
 header {
-    height: 5vw;
+    height: 6vw;
 }
 
 /* main content */
 
 #main {
-    height: 95vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+.responsiv {
+    height: 80%;
+}
+
 
 /* question-card */
 
-.width-100 {
+#quiz-progress {
     width: 100%;
+    height: 30px;
+    text-align: center;
 }
 
 .quiz-answer:hover {
@@ -55,7 +59,7 @@ header {
 
 /* media compatibility */
 
-@media (max-width: 1200px) {
+@media (max-width: 1300px) {
 
     body {
         font-size: 14px !important;
@@ -66,7 +70,8 @@ header {
     }
 
     #card-container img{
-        height: 150px;
+        width: 500px;
+        height: 175px;
     }
     
     #answer_1, #answer_2, #answer_3, #answer_4 {

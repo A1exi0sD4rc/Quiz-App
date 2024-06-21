@@ -34,26 +34,29 @@ let questions = [
 ]
 let currentQuestion = 0;
 let answerRight = 0;
+let AUDIO_SUCCESS = new Audio('sounds/right_answer.wav');
+let AUDIO_FAIL = new Audio('sounds/wrong_answer.mp3');
+let AUDIO_COMPLETE = new Audio('sounds/quiz_complete.wav');
 
 
 function init() {
-    document.getElementById('max-questions').innerHTML = questions.length;
-
     showQuestion();
     updateProgress();
 }
 
 
 function showQuestion() {
+    document.getElementById('max-questions').innerHTML = questions.length;
     if (currentQuestion >= questions.length) {
-        document.getElementById('container-result').classList.remove('d-none');
-        document.getElementById('container-game').classList.add('d-none');
-
-        document.getElementById('right-answer').innerHTML = answerRight;
-        document.getElementById('number-questions').innerHTML = currentQuestion;
-        document.getElementById('card-img').src = './img/cup.png';
+        showEndScreen();
     } else {
-        let question = questions[currentQuestion];
+        showNextQuestion();
+    }
+}
+
+
+function showNextQuestion() {
+    let question = questions[currentQuestion];
 
         document.getElementById('question').innerHTML = question["question"];
         document.getElementById('answer_1').innerHTML = question["answer_1"];
@@ -61,7 +64,17 @@ function showQuestion() {
         document.getElementById('answer_3').innerHTML = question["answer_3"];
         document.getElementById('answer_4').innerHTML = question["answer_4"];
         document.getElementById('current-question').innerHTML = currentQuestion + 1;
-    }
+}
+
+
+function showEndScreen() {
+    document.getElementById('container-result').classList.remove('d-none');
+        document.getElementById('container-game').classList.add('d-none');
+
+        document.getElementById('right-answer').innerHTML = answerRight;
+        document.getElementById('number-questions').innerHTML = currentQuestion;
+        document.getElementById('card-img').src = './img/cup.png';
+        AUDIO_COMPLETE.play();
 }
 
 
@@ -71,8 +84,10 @@ function answer(answer) {
 
     if (selectAnswer !== rightAnswer) {
         document.getElementById(`answer_${selectAnswer}`).parentNode.classList.add('bg-danger');
+        AUDIO_FAIL.play();
     } else {
         answerRight++;
+        AUDIO_SUCCESS.play();
     }
     document.getElementById(`answer_${rightAnswer}`).parentNode.classList.add('bg-success');
     document.getElementById('next-question').disabled = false;
@@ -97,8 +112,20 @@ function resetAnswer() {
 
 
 function updateProgress() {
-    let calulateProgress = 100 * currentQuestion / questions.length;
+    let calulateProgress = 100 * (currentQuestion + 1) / questions.length;
+    let roundProgress = calulateProgress.toFixed(0);
 
-    document.getElementById('quiz-progress').ariaValueMax = questions.length;
-    document.getElementById('quiz-progress').innerHTML = `<b>${calulateProgress}%</b>`;
+    document.getElementById('progress-label').style = `width: ${calulateProgress}%;`;
+    document.getElementById('progress-label').innerHTML = `<b>${roundProgress}%</b>`;
+}
+
+
+function restartGame() {
+    document.getElementById('card-img').src = './img/card-bg.jpg';
+    document.getElementById('container-result').classList.add('d-none');
+    document.getElementById('container-game').classList.remove('d-none');
+    currentQuestion = 0;
+    answerRight = 0;
+
+    init();
 }
